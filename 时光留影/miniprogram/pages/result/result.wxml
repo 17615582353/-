@@ -1,0 +1,15 @@
+﻿<view class="page">
+  <view class="loading-area" wx:if="{{!resultUrl}}">
+    <view class="spinner"></view><text class="loading-text">正在用 AI 修复您的照片...</text>
+    <text class="loading-sub">正在进行：去模糊 → 超清化 → 智能上色</text>
+  </view>
+  <view class="result-area" wx:else>
+    <view class="image-compare"><image class="preview-image" src="{{resultUrl}}" mode="widthFix"></image></view>
+    <view class="action-buttons">
+      <button class="btn-primary" bindtap="previewCompare">📊 前后对比</button>
+      <button class="btn-download" bindtap="downloadResult" wx:if="{{canDownload}}">⬇️ 下载高清原图</button>
+      <button class="btn-buy" bindtap="goPayment" wx:else>🔓 付费解锁高清下载</button>
+    </view>
+    <view class="effect-tags"><view class="tag" wx:for="{{effects}}" wx:key="*this">{{item}}</view></view>
+  </view>
+</view>

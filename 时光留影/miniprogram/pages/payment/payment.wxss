@@ -1,0 +1,16 @@
+﻿.page{min-height:100vh;padding:30rpx}
+.section-title{font-size:36rpx;font-weight:700;display:block}
+.section-desc{font-size:26rpx;color:rgba(255,255,255,0.5);margin-top:10rpx;display:block;margin-bottom:30rpx}
+.plans{display:flex;gap:20rpx;margin-bottom:40rpx}
+.plan-card{flex:1;padding:30rpx 20rpx;background:rgba(255,255,255,0.05);border-radius:20rpx;text-align:center;border:2rpx solid transparent;position:relative}
+.plan-card.active{border-color:#6C63FF;background:rgba(108,99,255,0.1)}.plan-card.popular{border-color:rgba(253,203,110,0.3)}
+.popular-badge{position:absolute;top:-16rpx;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#FDCB6E,#E17055);color:#fff;font-size:20rpx;padding:6rpx 20rpx;border-radius:20rpx;white-space:nowrap}
+.plan-name{font-size:26rpx;color:rgba(255,255,255,0.6);display:block;margin-bottom:16rpx}
+.price-row{display:flex;align-items:baseline;justify-content:center;gap:4rpx}
+.currency{font-size:28rpx;color:#FFF}.price{font-size:56rpx;font-weight:800;color:#FFF}.period{font-size:24rpx;color:rgba(255,255,255,0.4)}
+.plan-desc{font-size:22rpx;color:rgba(255,255,255,0.4);margin-top:12rpx}
+.single-buy{margin-bottom:40rpx}.single-card{display:flex;justify-content:space-between;align-items:center;padding:30rpx;background:rgba(255,255,255,0.05);border-radius:20rpx;margin-top:20rpx}
+.single-label{font-size:28rpx}.single-desc{font-size:22rpx;color:rgba(255,255,255,0.4);margin-top:6rpx}
+.single-price{font-size:40rpx;font-weight:700;color:#6C63FF}
+.pay-btn{width:100%;margin-bottom:40rpx}
+.features-list{display:flex;flex-direction:column;gap:20rpx}.feature-row{font-size:26rpx;color:rgba(255,255,255,0.7)}

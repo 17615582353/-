@@ -1,0 +1,1 @@
+﻿App({globalData:{userInfo:null,isVip:false,dailyFreeCount:1,usedToday:0},onLaunch(){wx.cloud.init({env:'your-env-id'});this.checkLogin()},checkLogin(){const token=wx.getStorageSync('token');if(token){this.globalData.token=token}}})

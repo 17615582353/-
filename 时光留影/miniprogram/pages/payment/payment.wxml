@@ -1,0 +1,28 @@
+﻿<view class="page">
+  <text class="section-title">选择会员方案</text>
+  <text class="section-desc">解锁无限次高清修复</text>
+  <view class="plans">
+    <view class="plan-card {{selectedPlan==="month"?"active":""}}" bindtap="selectPlan" data-plan="month">
+      <text class="plan-name">月卡</text><view class="price-row"><text class="currency">¥</text><text class="price">14.9</text><text class="period">/月</text></view>
+      <text class="plan-desc">无限次修复 + 优先处理</text>
+    </view>
+    <view class="plan-card popular {{selectedPlan==="quarter"?"active":""}}" bindtap="selectPlan" data-plan="quarter">
+      <view class="popular-badge">🔥 最划算</view>
+      <text class="plan-name">季卡</text><view class="price-row"><text class="currency">¥</text><text class="price">34.9</text><text class="period">/季</text></view>
+      <text class="plan-desc">≈¥11.6/月，省30%</text>
+    </view>
+    <view class="plan-card {{selectedPlan==="year"?"active":""}}" bindtap="selectPlan" data-plan="year">
+      <text class="plan-name">年卡</text><view class="price-row"><text class="currency">¥</text><text class="price">99</text><text class="period">/年</text></view>
+      <text class="plan-desc">≈¥8.3/月，省44%</text>
+    </view>
+  </view>
+  <view class="single-buy">
+    <text class="section-title">单次使用</text>
+    <view class="single-card" bindtap="buySingle">
+      <view class="single-info"><text class="single-label">单张高清修复</text><text class="single-desc">不限修复效果，永久保存</text></view>
+      <text class="single-price">¥3.9</text>
+    </view>
+  </view>
+  <button class="btn-primary pay-btn" bindtap="handlePayment">{{selectedPlan==="month"?"立即开通月卡":selectedPlan==="quarter"?"立即开通季卡":"立即开通年卡"}}</button>
+  <view class="features-list"><text class="feature-row">✅ 无限次 AI 修复</text><text class="feature-row">✅ 高清原图下载</text><text class="feature-row">✅ AI 智能上色</text><text class="feature-row">✅ 优先排队处理</text><text class="feature-row">✅ 专属客服支持</text></view>
+</view>

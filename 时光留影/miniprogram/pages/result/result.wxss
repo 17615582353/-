@@ -1,0 +1,14 @@
+﻿.page{min-height:100vh;padding:30rpx}
+.loading-area{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:70vh}
+.spinner{width:100rpx;height:100rpx;border:6rpx solid rgba(108,99,255,0.2);border-top-color:#6C63FF;border-radius:50%;animation:spin 1s linear infinite;margin-bottom:40rpx}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-text{font-size:30rpx;color:#FFF;margin-bottom:16rpx}
+.loading-sub{font-size:24rpx;color:rgba(255,255,255,0.4)}
+.result-area{display:flex;flex-direction:column;gap:30rpx}
+.image-compare{border-radius:20rpx;overflow:hidden;background:rgba(255,255,255,0.05)}
+.preview-image{width:100%;display:block}
+.action-buttons{display:flex;flex-direction:column;gap:20rpx}
+.btn-download{background:linear-gradient(135deg,#00B894,#00CEC9);color:#fff;border-radius:50rpx;padding:24rpx 0;text-align:center;font-size:30rpx;font-weight:600;border:none}
+.btn-buy{background:linear-gradient(135deg,#FDCB6E,#E17055);color:#fff;border-radius:50rpx;padding:24rpx 0;text-align:center;font-size:30rpx;font-weight:600;border:none}
+.effect-tags{display:flex;flex-wrap:wrap;gap:16rpx;justify-content:center}
+.tag{padding:12rpx 28rpx;background:rgba(0,184,148,0.15);border-radius:30rpx;font-size:24rpx;color:#00B894;border:1rpx solid rgba(0,184,148,0.3)}

@@ -1,0 +1,21 @@
+﻿<view class="page">
+  <view class="hero">
+    <image class="logo" src="/images/logo.png" mode="aspectFit"></image>
+    <text class="title">时光留影</text>
+    <text class="subtitle">让记忆重新清晰</text>
+  </view>
+  <view class="upload-area" bindtap="chooseImage">
+    <view class="upload-box">
+      <image class="upload-icon" src="/images/upload.png" mode="aspectFit"></image>
+      <text class="upload-text">点击上传老照片</text>
+      <text class="upload-hint">支持 JPG / PNG，≤20MB</text>
+    </view>
+  </view>
+  <view class="features">
+    <view class="feature-item"><text class="feature-icon">✨</text><text class="feature-label">AI 去模糊</text></view>
+    <view class="feature-item"><text class="feature-icon">🎨</text><text class="feature-label">智能上色</text></view>
+    <view class="feature-item"><text class="feature-icon">🔍</text><text class="feature-label">超清放大</text></view>
+    <view class="feature-item"><text class="feature-icon">🩹</text><text class="feature-label">划痕修复</text></view>
+  </view>
+  <view class="daily-tip"><text class="tip-text">今日免费修复次数：{{freeCount}}/{{dailyLimit}}</text></view>
+</view>

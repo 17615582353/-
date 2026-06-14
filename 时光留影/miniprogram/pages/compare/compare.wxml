@@ -1,0 +1,15 @@
+﻿<view class="page">
+  <view class="slider-container">
+    <view class="compare-wrapper">
+      <image class="compare-image original" src="{{originalImage}}" mode="aspectFit"></image>
+      <image class="compare-image restored" src="{{restoredImage}}" mode="aspectFit" style="clip-path:inset(0 {{100-sliderValue}}% 0 0)"></image>
+      <view class="slider-line" style="left:{{sliderValue}}%"></view>
+      <view class="slider-handle" style="left:{{sliderValue}}%" bindtouchmove="onSliderMove" bindtouchstart="onSliderStart"><text class="handle-icon">⇔</text></view>
+    </view>
+  </view>
+  <view class="labels"><text class="label-original">📷 修复前</text><text class="label-restored">✨ 修复后</text></view>
+  <view class="btn-group">
+    <button class="btn-primary" bindtap="downloadCurrent">⬇️ 下载修复版</button>
+    <button class="btn-back" bindtap="goBack">🔄 重新上传</button>
+  </view>
+</view>

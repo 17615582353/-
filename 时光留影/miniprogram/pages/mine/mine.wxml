@@ -1,0 +1,22 @@
+﻿<view class="page">
+  <view class="user-card card">
+    <view class="avatar"><image src="{{avatarUrl||"/images/default_avatar.png"}}" mode="aspectFill"></image></view>
+    <view class="user-info">
+      <text class="nickname">{{nickname||"未登录"}}</text>
+      <text class="vip-badge" wx:if="{{isVip}}">🌟 VIP 会员</text>
+      <text class="vip-badge inactive" wx:else>普通用户</text>
+    </view>
+    <button class="login-btn" wx:if="{{!isLoggedIn}}" bindtap="login">微信一键登录</button>
+  </view>
+  <view class="stats">
+    <view class="stat-item"><text class="stat-num">{{restoreCount}}</text><text class="stat-label">修复次数</text></view>
+    <view class="stat-item"><text class="stat-num">{{savedCount}}</text><text class="stat-label">已保存</text></view>
+    <view class="stat-item"><text class="stat-num">{{daysActive}}</text><text class="stat-label">使用天数</text></view>
+  </view>
+  <view class="menu-list card">
+    <view class="menu-item" bindtap="goPayment"><text>💎 会员中心</text><text class="arrow">›</text></view>
+    <view class="menu-item" bindtap="goHistory"><text>📋 修复记录</text><text class="arrow">›</text></view>
+    <view class="menu-item" bindtap="shareApp"><text>📤 分享给好友</text><text class="arrow">›</text></view>
+    <view class="menu-item" bindtap="showAbout"><text>ℹ️ 关于我们</text><text class="arrow">›</text></view>
+  </view>
+</view>
