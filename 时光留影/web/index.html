@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>时光留影 - AI老照片修复</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📸</text></svg>">
+  <link rel="stylesheet" href="css/style.css">
+  <meta name="description" content="时光留影 - AI老照片修复小程序。上传泛黄破损的老照片，AI自动去模糊、超清化、智能上色，让记忆重新清晰。">
+  <meta property="og:title" content="时光留影 - AI老照片修复">
+  <meta property="og:description" content="让记忆重新清晰">
+</head>
+<body>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <!-- 导航栏 -->
+  <nav class="navbar">
+    <div class="nav-brand" onclick="navigate('home')">
+      <div class="logo">📸</div>
+      <span>时光留影</span>
+    </div>
+    <div class="nav-links">
+      <button class="nav-link active" data-page="home" onclick="navigate('home')">修复</button>
+      <button class="nav-link" data-page="pricing" onclick="navigate('pricing')">会员</button>
+      <button class="nav-link" data-page="history" onclick="navigate('history')">记录</button>
+      <button class="nav-link" data-page="profile" onclick="navigate('profile')">我的</button>
+    </div>
+  </nav>
+
+  <!-- ===== 首页 ===== -->
+  <div class="page active" id="page-home">
+    <div class="container">
+      <div class="hero">
+        <div class="hero-logo">📸</div>
+        <h1>时光留影</h1>
+        <p>上传一张泛黄的老照片，AI 让它重新清晰</p>
+      </div>
+
+      <div class="upload-zone" id="upload-zone">
+        <div class="icon">🖼️</div>
+        <h3>点击上传老照片</h3>
+        <p>支持 JPG / PNG，≤20MB · 点击选择或拖拽照片到此处</p>
+        <input type="file" id="file-input" accept="image/jpeg,image/png" style="display:none">
+      </div>
+
+      <div class="features">
+        <div class="feature-card"><span class="icon">✨</span><span class="label">AI 去模糊</span></div>
+        <div class="feature-card"><span class="icon">🎨</span><span class="label">智能上色</span></div>
+        <div class="feature-card"><span class="icon">🔍</span><span class="label">超清放大</span></div>
+        <div class="feature-card"><span class="icon">🩹</span><span class="label">划痕修复</span></div>
+      </div>
+
+      <p style="text-align:center;color:var(--text-muted);font-size:14px;">
+        📅 今日免费修复次数：<strong class="free-count">1</strong>/<span class="daily-limit">1</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- ===== 结果页 ===== -->
+  <div class="page" id="page-result"></div>
+
+  <!-- ===== 对比页 ===== -->
+  <div class="page" id="page-compare"></div>
+
+  <!-- ===== 会员页 ===== -->
+  <div class="page" id="page-pricing">
+    <div class="container">
+      <div class="hero" style="padding-bottom:0;">
+        <h1>选择会员方案</h1>
+        <p>解锁无限次高清修复，让更多记忆重获新生</p>
+      </div>
+
+      <div class="pricing">
+        <div class="plan-card" data-plan="month" onclick="selectPlan('month')">
+          <h3>月卡</h3>
+          <div class="price"><span class="currency">¥</span>14.9<span class="period">/月</span></div>
+          <p class="desc">无限次修复 + 优先处理</p>
+          <button class="btn btn-primary btn-full" onclick="handlePayment('month')">立即开通</button>
+        </div>
+        <div class="plan-card popular active" data-plan="quarter" onclick="selectPlan('quarter')">
+          <h3>季卡</h3>
+          <div class="price"><span class="currency">¥</span>34.9<span class="period">/季</span></div>
+          <p class="desc">≈¥11.6/月，省30%</p>
+          <button class="btn btn-primary btn-full" onclick="handlePayment('quarter')">立即开通</button>
+        </div>
+        <div class="plan-card" data-plan="year" onclick="selectPlan('year')">
+          <h3>年卡</h3>
+          <div class="price"><span class="currency">¥</span>99<span class="period">/年</span></div>
+          <p class="desc">≈¥8.3/月，省44%</p>
+          <button class="btn btn-primary btn-full" onclick="handlePayment('year')">立即开通</button>
+        </div>
+      </div>
+
+      <div class="single-card" onclick="buySingle()">
+        <div><div class="label">单张高清修复</div><div class="desc">不限修复效果，永久保存</div></div>
+        <div class="price">¥3.9</div>
+      </div>
+
+      <ul class="feature-list">
+        <li>✅ 无限次 AI 修复</li>
+        <li>✅ 高清原图下载</li>
+        <li>✅ AI 智能上色</li>
+        <li>✅ 优先排队处理</li>
+        <li>✅ 专属客服支持</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== 历史页 ===== -->
+  <div class="page" id="page-history">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;">
+        <h2>修复记录</h2>
+        <span style="font-size:14px;color:var(--text-muted);">共 <span class="record-count">0</span> 张</span>
+      </div>
+      <div class="record-list"></div>
+    </div>
+  </div>
+
+  <!-- ===== 个人中心 ===== -->
+  <div class="page" id="page-profile">
+    <div class="container">
+      <div class="profile-card">
+        <div class="avatar">👤</div>
+        <div class="profile-info">
+          <h3 class="nickname">未登录</h3>
+          <span class="badge badge-normal vip-badge">普通用户</span>
+        </div>
+        <button class="btn btn-primary" onclick="login()" id="login-btn" style="margin-left:auto;">微信登录</button>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-box"><div class="num restore-count">0</div><div class="label">修复次数</div></div>
+        <div class="stat-box"><div class="num saved-count">0</div><div class="label">已保存</div></div>
+        <div class="stat-box"><div class="num">1</div><div class="label">使用天数</div></div>
+      </div>
+
+      <div class="menu-list">
+        <div class="menu-item" onclick="navigate('pricing')"><span>💎 会员中心</span><span class="arrow">›</span></div>
+        <div class="menu-item" onclick="navigate('history')"><span>📋 修复记录</span><span class="arrow">›</span></div>
+        <div class="menu-item" onclick="shareApp()"><span>📤 分享给好友</span><span class="arrow">›</span></div>
+        <div class="menu-item" onclick="showAbout()"><span>ℹ️ 关于我们</span><span class="arrow">›</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 关于弹窗 ===== -->
+  <div class="modal" id="modal-about">
+    <div class="modal-content">
+      <h3>关于时光留影</h3>
+      <p>时光留影是一款基于 AI 技术的老照片修复应用。我们利用最新的深度学习算法（GFP-GAN、Real-ESRGAN、DeOldify），为您修复泛黄、破损、模糊的老照片，让珍贵的记忆重新清晰。</p>
+      <p style="margin-top:16px;color:var(--text-muted);font-size:14px;">版本 1.0.0 · 创新创业比赛项目</p>
+      <button class="btn btn-primary" onclick="closeModal('modal-about')" style="margin-top:20px;">知道了</button>
+    </div>
+  </div>
+
+  <!-- ===== 底部 ===== -->
+  <div class="footer">
+    时光留影 · 让记忆重新清晰 💜
+  </div>
+
+  <style>
+    .modal { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); backdrop-filter:blur(4px); z-index:9998; align-items:center; justify-content:center; }
+    .modal.show { display:flex; }
+    .modal-content { background:#1a1a2e; padding:40px; border-radius:20px; max-width:480px; margin:20px; text-align:center; border:1px solid var(--border); }
+    .modal-content h3 { font-size:22px; margin-bottom:16px; }
+    .modal-content p { font-size:15px; line-height:1.8; color:var(--text-secondary); }
+    #login-btn { display:inline-flex; }
+  </style>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
